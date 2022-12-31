@@ -28,6 +28,9 @@ def index():
     result = request.args.get("result")
     docfile = Document()
     docfile.add_paragraph(result)
+    folder_path = "download"
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
     docfile.save("download/string_to_word_doc.docx")
     return render_template("index.html", result=result)
 
