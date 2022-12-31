@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+  <title>TreatiseAI</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='gavel.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='gavel.png') }}" class="icon" />
+  <h3>TreatiseAI</h3>
+  <form action="/" method="post">
+    <input type="radio" id="memo" name="document" value="memo" checked>
+    <label for="memo">Memorandum</label><br>
+    <input type="radio" id="bullets" name="document" value="bullets">
+    <label for="bullets">Bullet memo</label><br>
+    <input type="radio" id="contract" name="document" value="contract">
+    <label for="contract">Contract</label><br>
+    <input type="radio" id="claim_letter" name="document" value="claim_letter">
+    <label for="contract">Claim Letter</label><br>
+    <input type="text" name="subject" placeholder="Subject matter" required />
+    <input type="text" name="jurisdiction" placeholder="Jurisdiction" required />
+    <input type="text" name="party1" placeholder="Contract party 1" />
+    <input type="text" name="party2" placeholder="Contract party 2" />
+    <input type="submit" value="Generate" />
+  </form>
+  {% if result %}
+  <h3>Work:</h3>
+  <div class="result">{{ result }}</div>
+  <a href="/download">Download Word Document</a>
+  {% endif %}
+</body>
