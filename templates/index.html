@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <head>
-  <title>TreatiseAI</title>
+  <title>TreatiseAI Feedback Pre-Alpha</title>
   <link
     rel="shortcut icon"
     href="{{ url_for('static', filename='gavel.png') }}"
   />
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}" />
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='gavel.png') }}" class="icon" />
-  <h3>TreatiseAI</h3>
-  <form action="/" method="post">
-    <input type="radio" id="memo" name="document" value="memo" checked>
-    <label for="memo">Memorandum</label><br>
-    <input type="radio" id="bullets" name="document" value="bullets">
-    <label for="bullets">Bullet memo</label><br>
-    <input type="radio" id="contract" name="document" value="contract">
-    <label for="contract">Contract</label><br>
-    <input type="radio" id="claim_letter" name="document" value="claim_letter">
-    <label for="contract">Claim Letter</label><br>
-    <input type="text" name="subject" placeholder="Subject matter" required />
-    <input type="text" name="jurisdiction" placeholder="Jurisdiction" required />
-    <input type="text" name="party1" placeholder="Contract party 1" />
-    <input type="text" name="party2" placeholder="Contract party 2" />
-    <input type="submit" value="Generate" />
-  </form>
+  <img src="{{ url_for('static', filename='tailogo.png') }}" width=360px />
+  <h3>Feedback Pre-Alpha</h3>
+  <text>{{ user.username }} logged in</text>
+  <div align="center">
+    <form action="/" method="post">
+      <br><label for="document">Choose a document type:</label>
+      <select id="document" name="document">
+        <option value="memo">Memorandum</option>
+        <option value="bullets">Bullet memo</option>
+        <option value="contract">Contract</option>
+        <option value="claim_letter">Claim letter</option>
+      </select><br><br>
+      <input type="text" name="subject" placeholder="Subject matter" required /><br>
+      <input type="text" name="jurisdiction" placeholder="Jurisdiction" required /><br>
+      <input type="text" name="party1" placeholder="Contract party 1" /><br>
+      <input type="text" name="party2" placeholder="Contract party 2" /><br><br>
+      <input type="submit" value="Generate" /><br><br>
+    </form>
+  </div>
   {% if result %}
-  <h3>Work:</h3>
+  <br><h4>Work:</h4>
   <div class="result">{{ result }}</div>
-  <a href="/download">Download Word Document</a>
+  <br><a href="/download">Download Word Document</a><br><br>
   {% endif %}
+  <footer><text>Copyright 2023 TreatiseAI. All rights reserved.</text></footer>
 </body>
