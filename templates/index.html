@@ -17,10 +17,11 @@
       <br><label for="document">Choose a document type:</label>
       <select id="document" name="document">
         <option value="memo">Memorandum</option>
-        <option value="longer_memo">Longer Memorandum (unreliable)</option>
+        <option value="longer_memo">Longer Memo (may be repetitive)</option>
         <option value="bullets">Bullet memo</option>
         <option value="contract">Contract</option>
-        <option value="longer_contract">Longer Contract (unreliable)</option>
+        <!--<option value="longer_contract">Longer Contract (unreliable)</option>-->
+        <!--not using for now; to be built in new way-->
         <option value="claim_letter">Claim letter</option>
       </select><br><br>
       <input type="text" name="subject" placeholder="Subject matter" required /><br>
@@ -33,7 +34,8 @@
   {% if result %}
   <br><h4>Work:</h4>
   <div class="result">{{ result }}</div>
-  <br><a href="/download">Download Word Document</a><br><br>
+  <br><a href="/download">Download Word document</a><br>
+  <br><a href="https://docs.google.com/forms/d/e/1FAIpQLScYVl4UOyHsm7_gQyZtrBRUlA8PRE2VlXa7aYSawy0vepqswg/viewform?usp=pp_url&entry.1879593767={{ result }}">Submit feedback on this output</a><br><br>
   {% endif %}
   <footer><text>Copyright 2023 TreatiseAI. All rights reserved.</text></footer>
 </body>

@@ -1,6 +1,6 @@
 # TreatiseAI
 
-This is a legal writing generator using the the OpenAI API. It is based on the OpenAI API quickstart (https://beta.openai.com/docs/quickstart). It uses the [Flask](https://flask.palletsprojects.com/en/2.0.x/) web framework. Follow the instructions below to get set up.
+TreatiseAI is a legal research and writing tool built on the the OpenAI API. It requires an OpenAI API key and uses the [Flask](https://flask.palletsprojects.com/en/2.0.x/) web framework. Follow the instructions below to get set up.
 
 ## Setup
 

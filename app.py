@@ -3,10 +3,11 @@ import math
 import openai
 import datetime
 from docx import Document
-from flask import Flask, redirect, render_template, request, url_for, send_file, request
+from flask import Flask, redirect, render_template, request, url_for, send_file, request, session
 import treatise_engine as tr
 
 app = Flask(__name__)
+app.secret_key = 'something something'
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Route for handling the login page logic
@@ -50,4 +51,4 @@ def download_word_doc():
     file_path = "download/" + file_name
 
     # Use the send_file function to send the file to the user
-    return send_file(file_path, as_attachment=True, attachment_filename=download_name)
+    return send_file(file_path, as_attachment=True, download_name=download_name)
