@@ -16,3 +16,7 @@ build/
 .DS_STORE
 
 .env
+
+user_credentials.db
+
+string_to_word_doc.docx

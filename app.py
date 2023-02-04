@@ -2,28 +2,49 @@ import os
 import math
 import openai
 import datetime
+import sqlite3
 from docx import Document
 from flask import Flask, redirect, render_template, request, url_for, send_file, request, session
 import treatise_engine as tr
 
 app = Flask(__name__)
-app.secret_key = 'something something'
+app.secret_key = os.getenv("COOKIE_KEY")
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Connect to the SQLite database
+conn = sqlite3.connect('user_credentials.db', check_same_thread=False)
+c = conn.cursor()
+
+# Create the users table if it doesn't already exist
+c.execute("""CREATE TABLE IF NOT EXISTS user_credentials (
+                username text PRIMARY KEY,
+                password text NOT NULL
+            );""")
+conn.commit()
 
 # Route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+        # Check if the user exists in the database
+        c.execute("SELECT * FROM user_credentials WHERE username=? AND password=?",
+                  (request.form['username'], request.form['password']))
+        user = c.fetchone()
+        if user is None:
             error = 'Invalid Credentials. Please try again.'
         else:
+            # Store the user's username in a session
+            session['username'] = request.form['username']
             return redirect(url_for('index'))
     return render_template('login.html', error=error)
 
 @app.route("/", methods=("GET", "POST"))
 def index():
-    user = {'username': 'User1'}
+    # Redirect to the login page if the user is not logged in
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    user = {'username': session['username']}
     if request.method == "POST":
         subject = request.form["subject"]
         jurisdiction = request.form["jurisdiction"]

@@ -28,14 +28,14 @@
       <input type="text" name="jurisdiction" placeholder="Jurisdiction" required /><br>
       <input type="text" name="party1" placeholder="Contract party 1" /><br>
       <input type="text" name="party2" placeholder="Contract party 2" /><br><br>
-      <input type="submit" value="Generate" /><br><br>
+       <button type="submit" class="btn btn-primary">Generate</button><br><br>
     </form>
   </div>
   {% if result %}
   <br><h4>Work:</h4>
   <div class="result">{{ result }}</div>
-  <br><a href="/download">Download Word document</a><br>
-  <br><a href="https://docs.google.com/forms/d/e/1FAIpQLScYVl4UOyHsm7_gQyZtrBRUlA8PRE2VlXa7aYSawy0vepqswg/viewform?usp=pp_url&entry.1879593767={{ result }}">Submit feedback on this output</a><br><br>
+  <br><a href="/download" class="btn btn-primary mt-3">Download Word document</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScYVl4UOyHsm7_gQyZtrBRUlA8PRE2VlXa7aYSawy0vepqswg/viewform?usp=pp_url&entry.1879593767={{ result }}" target="_blank" class="btn btn-primary mt-3">Submit feedback on this output</a><br><br>
   {% endif %}
   <footer><text>Copyright 2023 TreatiseAI. All rights reserved.</text></footer>
 </body>
