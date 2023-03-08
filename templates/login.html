@@ -1,18 +1,98 @@
 <html>
   <head>
     <title>TreatiseAI</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='gavel.png') }}"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}" />
+    <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 10px;
+    }
+    h1 {
+      font-size: 32px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    form {
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      padding: 5px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    input[type="text"],
+    select {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+    }
+    select {
+      height: 40px;
+    }
+    button {
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      font-size: 18px;
+      margin-top: 10px;
+      padding: 5px 10px;
+    }
+    button:hover {
+      background-color: #0069d9;
+    }
+    .result {
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      padding: 10px;
+      text-align: left;
+    }
+    footer {
+      background-color: #e9ecef;
+      color: #6c757d;
+      font-size: 14px;
+      margin-top: 30px;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+
+
   </head>
   <body>
     <img src="{{ url_for('static', filename='tailogo.png') }}" width=360px />
-    <div class="container">
+    <div align="center">
       <h1>Please login</h1>
       <br>
       <form action="" method="post">
         <input type="text" placeholder="Username" name="username">
          <input type="password" placeholder="Password" name="password">
-        <input class="btn btn-default" type="submit" value="Login">
+        <input class="btn btn-primary mt-3" type="submit" value="Login">
       </form>
       {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}

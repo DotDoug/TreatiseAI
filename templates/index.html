@@ -1,33 +1,108 @@
 <!DOCTYPE html>
 <head>
-  <title>TreatiseAI Feedback Pre-Alpha</title>
+  <title>TreatiseAI</title>
   <link
     rel="shortcut icon"
     href="{{ url_for('static', filename='gavel.png') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}" />
+    <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 10px;
+    }
+    h1 {
+      font-size: 32px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    form {
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      padding: 5px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    input[type="text"],
+    select {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding: 5px;
+      width: 100%;
+    }
+    select {
+      height: 40px;
+    }
+    button {
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      font-size: 18px;
+      margin-top: 10px;
+      padding: 5px 10px;
+    }
+    button:hover {
+      background-color: #0069d9;
+    }
+    .result {
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      padding: 10px;
+      text-align: left;
+    }
+    footer {
+      background-color: #e9ecef;
+      color: #6c757d;
+      font-size: 14px;
+      margin-top: 30px;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='tailogo.png') }}" width=360px />
-  <h3>Feedback Pre-Alpha</h3>
+  <img src="{{ url_for('static', filename='tailogo.png') }}" width=360px /><br>
   <text>{{ user.username }} logged in</text>
+  <br><a href="/logout" class="btn btn-primary mt-3">Logout</a>
+  <a href="/change_password" class="btn btn-primary mt-3">Change Password</a><br><br>
   <div align="center">
     <form action="/" method="post">
       <br><label for="document">Choose a document type:</label>
       <select id="document" name="document">
         <option value="memo">Memorandum</option>
-        <option value="longer_memo">Longer Memo (may be repetitive)</option>
+        <option value="longer_memo">Longer Memo (slow, repetitive)</option>
         <option value="bullets">Bullet memo</option>
         <option value="contract">Contract</option>
-        <!--<option value="longer_contract">Longer Contract (unreliable)</option>-->
+        <option value="longer_contract">Longer Contract (slow, repetitive)</option>
         <!--not using for now; to be built in new way-->
         <option value="claim_letter">Claim letter</option>
       </select><br><br>
       <input type="text" name="subject" placeholder="Subject matter" required /><br>
-      <input type="text" name="jurisdiction" placeholder="Jurisdiction" required /><br>
-      <input type="text" name="party1" placeholder="Contract party 1" /><br>
-      <input type="text" name="party2" placeholder="Contract party 2" /><br><br>
+      <input type="text" name="jurisdiction" placeholder="Jurisdiction" required /><br><br>
+      <!--<input type="text" name="party1" placeholder="Contract party 1" /><br>-->
+      <!--input type="text" name="party2" placeholder="Contract party 2" /><br><br>-->
        <button type="submit" class="btn btn-primary">Generate</button><br><br>
     </form>
   </div>
@@ -35,7 +110,7 @@
   <br><h4>Work:</h4>
   <div class="result">{{ result }}</div>
   <br><a href="/download" class="btn btn-primary mt-3">Download Word document</a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLScYVl4UOyHsm7_gQyZtrBRUlA8PRE2VlXa7aYSawy0vepqswg/viewform?usp=pp_url&entry.1879593767={{ result }}" target="_blank" class="btn btn-primary mt-3">Submit feedback on this output</a><br><br>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScYVl4UOyHsm7_gQyZtrBRUlA8PRE2VlXa7aYSawy0vepqswg/viewform?usp=pp_url&entry.1879593767={{ data_id }}" target="_blank" class="btn btn-primary mt-3">Submit feedback on this output</a><br><br>
   {% endif %}
   <footer><text>Copyright 2023 TreatiseAI. All rights reserved.</text></footer>
 </body>

@@ -13,6 +13,8 @@ dist/
 build/
 *.egg-info/
 
+data/*
+
 .DS_STORE
 
 .env
