@@ -13,8 +13,8 @@ dist/
 build/
 *.egg-info/
 
-/data/*
-/download/*
+data/
+download/
 
 .DS_STORE
 
