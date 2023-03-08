@@ -3,7 +3,7 @@
 TreatiseAI is a legal research and writing tool built on the the OpenAI API. It requires an OpenAI API key and uses the [Flask](https://flask.palletsprojects.com/en/2.0.x/) web framework. Follow the instructions below to get set up.
 
 TreatiseAI is available as a web demo at [treatiseai.com](https://www.treatiseai.com)
-Email info@clearlayer.com for credentials, describing your use for the tool
+Email george@clearlayer.io for credentials, describing your use for the tool
 
 ## Setup
 
