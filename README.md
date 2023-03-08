@@ -38,7 +38,9 @@ Email george@clearlayer.io for credentials, describing your use for the tool
 
 7. Add your [API key](https://beta.openai.com/account/api-keys) to the newly created `.env` file
 
-8. Run the app
+8. You'll likely need to edit the file paths in app.py to match your own.
+
+9. Run the app
 
    ```bash
    $ flask run
