@@ -13,8 +13,8 @@ dist/
 build/
 *.egg-info/
 
-/home/treatiseai/TreatiseAI/data/*
-/home/treatiseai/TreatiseAI/download/*
+data/
+download/
 
 .DS_STORE
 

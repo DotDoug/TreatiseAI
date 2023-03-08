@@ -57,6 +57,8 @@ def index():
         session['data_id'] = data_id
         # Store the data in a database or file with the data ID as the key
         data = {'response': response}
+        if not os.path.exists("/home/treatiseai/TreatiseAI/data/"):
+            os.makedirs("/home/treatiseai/TreatiseAI/data/")
         with open(f"/home/treatiseai/TreatiseAI/data/{data_id}.json", "w") as f:
             json.dump(data, f)
         return redirect(url_for("index"))
